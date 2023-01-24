@@ -60,3 +60,5 @@ function game() {
 
     alert(`You won ${winCount} games, lost ${lossCount}, and tied in ${tieCount}`);
 }
+
+game();
