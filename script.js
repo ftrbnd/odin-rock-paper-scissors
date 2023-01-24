@@ -39,16 +39,24 @@ function playRound(playerSelection, computerSelection) {
             break;
     }
 
-    let winningSelection, losingSelection;
-    if (result == 'win') {
-        winningSelection = playerSelection;
-        losingSelection = computerSelection;
-    } else if (result == 'lose') {
-        losingSelection = playerSelection;
-        winningSelection = computerSelection;
-    } else {
-        return `Tie! You both selected ${playerSelection[0].toUpperCase() + playerSelection.substring(1)}`;
+    return result;
+}
+
+function game() {
+    let winCount = 0, lossCount = 0, tieCount = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Enter 'rock', 'paper', or 'scissors':");
+        const result = playRound(playerSelection, getComputerChoice());
+
+        if (result == 'win') {
+            winCount++;
+        } else if (result == 'lose') {
+            lossCount++;
+        } else {
+            tieCount++;
+        }
     }
 
-    return `You ${result}! ${winningSelection[0].toUpperCase() + winningSelection.substring(1)} beats ${losingSelection[0].toUpperCase() + losingSelection.substring(1)}`;
+    alert(`You won ${winCount} games, lost ${lossCount}, and tied in ${tieCount}`);
 }
