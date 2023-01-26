@@ -43,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    const buttons = container.querySelectorAll('button');
+    const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             console.log(playRound(button.textContent, getComputerChoice()));
