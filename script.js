@@ -43,8 +43,39 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function displayResult(result) {
+    const h1 = document.querySelector('#game-result');
+    if (h1) {
+        h1.remove();
+    }
+
     const resultCounter = document.querySelector(`#${result}`);
     resultCounter.textContent = parseInt(resultCounter.textContent) + 1;
+
+    if (resultCounter.textContent == '5' && result != 'tie') {
+        announceWinner(result);
+    }
+}
+
+function announceWinner(result) {
+    const scoresDiv = document.querySelector('.scores');
+    const h1 = document.createElement('h1');
+    h1.setAttribute('id', 'game-result');
+
+    if (result == 'win') {
+        h1.textContent = 'You win!';
+    } else {
+        h1.textContent = 'You lose :(';
+    }
+
+    const winsCounter = document.querySelector('#win');
+    const lossCounter = document.querySelector('#lose');
+    const tieCounter = document.querySelector('#tie');
+
+    winsCounter.textContent = 0;
+    lossCounter.textContent = 0;
+    tieCounter.textContent = 0;
+
+    scoresDiv.appendChild(h1);
 }
 
 function game() {
