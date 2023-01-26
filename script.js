@@ -42,11 +42,16 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
+function displayResult(result) {
+    const resultCounter = document.querySelector(`#${result}`);
+    resultCounter.textContent = parseInt(resultCounter.textContent) + 1;
+}
+
 function game() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            console.log(playRound(button.textContent, getComputerChoice()));
+            displayResult(playRound(button.textContent, getComputerChoice()));
         });
     });
 }
