@@ -43,22 +43,12 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let winCount = 0, lossCount = 0, tieCount = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter 'rock', 'paper', or 'scissors':");
-        const result = playRound(playerSelection, getComputerChoice());
-
-        if (result == 'win') {
-            winCount++;
-        } else if (result == 'lose') {
-            lossCount++;
-        } else {
-            tieCount++;
-        }
-    }
-
-    alert(`You won ${winCount} games, lost ${lossCount}, and tied in ${tieCount}`);
+    const buttons = container.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log(playRound(button.textContent, getComputerChoice()));
+        });
+    });
 }
 
 game();
